@@ -1,0 +1,49 @@
+{% extends  'buyer/base.html' %}
+{% load static %}
+<title>{% block title %} About Us  {% endblock %}</title>
+
+{% block pagecontent %}
+
+<!-- Hero section -->
+
+<section class="hero-section set-bg" data-setbg="{% static 'img/banner/about.jpg' %}">	
+</section>
+
+<!-- Hero section end -->
+
+<!-- aboutus section -->
+<section class="aboutus-section">
+	<div class="aboutus-content container">
+		<h2>About Us</h2>
+		<br>
+		
+		<p>
+			We have streamlined the process of buying or selling a home to make it easier for you! We have built a team of industry experts to make sure you have access to local home inspectors, contractors, interior designers, service providers, property managers, lending professionals, title and escrow companies, painters, gardeners, plumbers, electricians home warranty companies and more to provide you with the best service possible!
+		</p>
+		<p>
+			We are dedicated to providing the most up-to-date market data in the area. Our team is made up of caring, knowledgeable professionals that work tirelessly to help you with the home buying and selling process. 
+		</p>
+		<p>
+			In Search of the Perfect Property? Try our easy to use <a href="#">FAST property search! </a>
+		</p>
+		<p>
+			Curious about what’s happening in your neighborhood? You can create a <a href="#">custom market report </a> to see what’s active, under contract, and sold in your neighborhood! 
+		</p>
+		<p>
+			Considering selling or refinancing your home?<a href="#"> Get an INSTANT property valuation now!</a>
+		</p>
+		<p>
+			<a href="#">Contact us </a> today to find out how we can be of assistance to you!
+		</p>
+		<br>
+		<h3>Meet the Team</h3>
+		<span><a href="#">marc_realestate</a></span>
+		<br><br>
+		<img height="200px" class="img-responsive" src="{% static 'img/team/md.jpg'%}"/>
+		<br>
+		<br>
+		<h3>Testimonials</h3>
+	</div>
+</section>
+
+{% endblock %}

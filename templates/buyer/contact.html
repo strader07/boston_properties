@@ -1,0 +1,67 @@
+{% extends 'buyer/base.html' %} {% load static %}
+<title>{% block title %} Contact Us {% endblock %}</title>
+
+{% block pagecontent %}
+<div style="border: 0.5px solid; margin: 0px;"></div>
+<section class="page-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="{% static 'img/contact.jpg' %}" alt="" />
+                <br />
+                <br />
+
+                <p>
+                    <i class="fa fa-map-marker"></i>3711-2880 Nulla St, Mankato, Mississippi
+                </p>
+                <p><i class="fa fa-envelope"></i>info.test@test.com</p>
+                <p><i class="fa fa-phone"></i>(+88) 8888888888</p>
+            </div>
+            <div class="col-lg-6">
+                <div class="contact-right">
+                    <div class="section-title">
+                        <h3>Get in touch</h3>
+                        <p>
+                            We look forward to helping you. Please add any additional comments below and we will be in touch with you shortly.
+                        </p>
+                    </div>
+                    <form class="contact-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" placeholder="First Name" id="con-name" />
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" placeholder="Last Name" id="con-lname" />
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" placeholder="Your Email" name="con-email" />
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" placeholder="Phone Number" name="Phone" id="con-phone" />
+                            </div>
+                            <div class="col-md-6">
+                                <p>How soon are you looking to buy or sell?</p>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" list="how-soon" />
+
+                                <datalist id="how-soon">
+                  <option>Not Sure</option>
+                  <option>Within the next 3 months</option>
+                  <option>Within the next 6 months</option>
+                  <option>Now</option>
+                </datalist>
+                            </div>
+                            <div class="col-md-12">
+                                <textarea placeholder="Comments, Questions, Special Requests?"></textarea>
+                                <button class="site-btn">SUBMIT NOW</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

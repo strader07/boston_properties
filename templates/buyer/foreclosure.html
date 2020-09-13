@@ -1,0 +1,122 @@
+ {% extends 'buyer/base.html' %} 
+ {% load static %} 
+
+ {% block title %} Area Foreclosure {% endblock %}
+ {% block pagecontent %}
+
+<!-- Hero section -->
+<section class="hero-section set-bg" data-setbg="{% static 'img/foreclosure.jpg' %}">
+    <div class="container hero-text ">
+        <!-- <h1 class="text-white" >MF REALESTATE</h1> -->
+        <!-- <h1 class="foreclosure">Foreclosure Search</h1>  -->
+
+            <h1 class="foreclosure">Foreclosure Search</h1> 
+       </div>
+</section>
+<!-- Hero section end -->
+
+<!-- Filter form section -->
+<div class="filter-search">
+    <div class="container">
+        <form class="filter-form" action="property_result">
+			<select name="CityChoice">
+				<option value="">City Choice</option>
+				<!-- <option value="">Any</option> -->
+				{% for city in cities %}
+				<option value="{{ city.name }}">{{ city.name }}</option>
+				{% endfor %}
+				</select>
+				<select name="AreaChoice">
+				<option value="">Area Choice</option>
+				<!-- <option value="">Any</option> -->
+				{% for area in areas %}
+				<option value="{{ area.area_name }}">{{ area.area_name }}</option>
+				{% endfor %}
+				</select>
+				<select name="LimitFrom">
+				<option value="">Limit From</option>
+				<!-- <option value="">Any</option> -->
+				<option value="1000">$1000</option>
+				<option value="2000">$2000</option>
+				<option value="3000">$3000</option>
+				<option value="5000">$5000</option>
+				<option value="10000">$10000</option>
+				<option value="15000">$15000</option>
+				<option value="20000">$20000</option>
+	
+	
+	
+				</select>
+				<select name="LimitTo">
+				<option value="">Limit To</option>
+				<!-- <option value="">Any</option> -->
+				<option value="1000">$1000</option>
+				<option value="2000">$2000</option>
+				<option value="3000">$3000</option>
+				<option value="5000">$5000</option>
+				<option value="10000">$10000</option>
+				<option value="15000">$15000</option>
+				<option value="20000">$20000</option>
+				</select>
+	
+	
+				<button class="site-btn fs-submit">SEARCH</button>		</form>
+    </div>
+</div>
+<!-- Filter form section end -->
+
+<! -- Latest Foreclosure section -->
+<section class="properties-section spad-foreclouser">
+    <div class="container ">
+        
+        <h2>
+            Check Out the Latest Foreclosures
+        </h2>
+        <br />
+
+        <p>
+            Foreclosures are getting harder and harder to find, but we’re here to help you in your search. If you are in the market for a short sale, foreclosed or REO property, please contact us to get the latest list. Though we display the most recent foreclosures
+            listed in our MLS®, not all properties make it online. They sell too quickly!
+        </p>
+        <p>
+            To be in the know when it comes to foreclosures, you need a licensed real estate agent working for you on the inside. We’d love to help you keep track of the latest opportunities in [area]. If you want to view properties today, please don’t wait for an
+            email reply, call us at [phone] for the fastest service.
+        </p>
+
+        <br />
+        <br />
+    </div>
+</section>
+
+<!-- Foreclosure end-->
+
+<div class="container">
+    <div class="row address-search">
+        <div class="col">
+            <div class="panel panel-default address-search-box">
+                <div class="panel-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1 ">Address Search</label>
+
+                            <input type="email " class="form-control" id="exampleInputEmail1 " aria-describedby="emailHelp " placeholder="Enter an Address,City,Zip " />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>Cooming Soon Properties</h4>
+            <ul style="width: 100%; float: left; list-style: none;">
+                <li><a href="">Lynn</a></li>
+                <li><a href="">Woburn</a></li>
+            </ul>
+
+            <ul style="float: left; list-style: none;">
+                <li><a href="">Boston</a></li>
+                <li><a href="">Medford</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{%endblock%}

@@ -1,0 +1,1622 @@
+{% extends  'buyer/base.html' %}
+{% load static %}
+<title>{% block title %} Advance Search  {% endblock %}</title>
+
+{% block pagecontent %}
+
+<div style="border: 0.5px solid; margin:0px"> </div>
+
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 ">
+            <nav>
+                <div class="nav nav-pills" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="pill" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Advanced Search</a>
+                    <a class="nav-item nav-link" id="nav-condo-tab" data-toggle="pill" href="#nav-condo" role="tab" aria-controls="nav-condo" aria-selected="false">Condo Search</a>
+                    <a class="nav-item nav-link" id="nav-mls-tab" data-toggle="pill" href="#nav-mls" role="tab" aria-controls="nav-mls" aria-selected="false">MLS Number Search</a>
+                    <a class="nav-item nav-link" id="nav-foreclosure-tab" data-toggle="pill" href="#nav-foreclosure" role="tab" aria-controls="nav-foreclosure" aria-selected="false">Foreclosure Search</a>
+                    <a class="nav-item nav-link" id="nav-zipcode-tab" data-toggle="pill" href="#nav-zipcode" role="tab" aria-controls="nav-zipcode" aria-selected="false">ZIP Code Search</a>
+                    <a class="nav-item nav-link" id="nav-sold-tab" data-toggle="pill" href="#nav-sold" role="tab" aria-controls="nav-sold" aria-selected="false">Sold Search</a>
+                    <a class="nav-item nav-link" id="nav-address-tab" data-toggle="pill" href="#nav-address" role="tab" aria-controls="nav-address" aria-selected="false">Address Search</a>
+                </div>
+            </nav>
+        
+            <div class="tab-content py-3 px-3 px-sm-0" id="pills-nav-tabContent">
+                <!--- advance search  tab-->
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <!-- -------advance search section start     ----------   -->   
+                    <form action="advanced-search-result">
+                        <div class="row">
+                            <div class="col">
+                                <h3 id="location">Location</h3>
+                                <div class="panel panel-default location">
+                                    <div class="row"> 
+                                    <div class="col-md-6"><h4>City </h4>
+                                    <br>
+                                    </div>
+                                    <div class="col-md-6"><h4>Area</h4> 
+                                    <br>
+                                    </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <select name="cityChoice" multiple class="form-control" id="sel1">
+                                                    <option value="all" selected="selected">All</option>
+                                                    <option value="Abington">Abington</option>
+                                                    <option value="Acton">Acton</option>
+                                                    <option value="Agawam">Agawam</option>
+                                                    <option value="Boston">Boston</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <select name="areaChoice" multiple class="form-control" id="sel1">
+                                                    <option value="all" selected="selected">Any</option>
+                                                    <option value="Allston">Allston</option>
+                                                    <option value="Bay Village">Bay Village</option>
+                                                    <option value="Beacon Hill">Beacon Hill</option>
+                                                    <option value="Brighton">Brighton</option>
+                                                    <option value="Feeding Hills">Feeding Hills</option>
+                                                    <option value="Hubbard Corners">Hubbard Corners</option>
+                                                    <option value="North Abington">North Abington</option>
+                                                    <option value="North Acton">North Acton</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h3 id="property">Property</h3>
+                                <div class="panel panel-default property">
+                                    <div class="panel-body">
+                                        <h6>Property Type</h6>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" name="ptypeCheckbox" type="checkbox" id="inlineCheckbox1" value="Home" />
+                                            <label class="form-check-label" for="inlineCheckbox1">Home</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="ptypeCheckbox" id="inlineCheckbox2" value="Condo" />
+                                            <label class="form-check-label" for="inlineCheckbox2">Condo</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="ptypeCheckbox" id="inlineCheckbox3" value="Land" />
+                                            <label class="form-check-label" for="inlineCheckbox2">Land</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="ptypeCheckbox" id="inlineCheckbox4" value="Multi-Res" />
+                                            <label class="form-check-label" for="inlineCheckbox2">Multi-Res</label>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="p-id">Price</label>
+                                                <select id="p-id" name="minPricetxt" class="form-control"> 
+                                                    <option selected="selected" value="No Limit">No Limit</option>
+                                                    <option value="50000">$50,000</option>
+                                                    <option value="100000">$100,000</option>
+                                                    <option value="150000">$150,000</option>
+                                                    <option value="200000">$200,000</option>
+                                                    <option value="250000">$250,000</option>
+                                                    <option value="300000">$300,000</option>
+                                                    <option value="350000">$350,000</option>
+                                                    <option value="400000">$400,000</option>
+                                                    <option value="450000">$450,000</option>
+                                                    <option value="500000">$500,000</option>
+                                                    <option value="550000">$550,000</option>
+                                                    <option value="600000">$600,000</option>
+                                                    <option value="650000">$650,000</option>
+                                                    <option value="700000">$700,000</option>
+                                                    <option value="750000">$750,000</option>
+                                                    <option value="800000">$800,000</option>
+                                                    <option value="850000">$850,000</option>
+                                                    <option value="900000">$900,000</option>
+                                                    <option value="950000">$950,000</option>
+                                                    <option value="1000000">$1 Million</option>
+                                                    <option value="1500000">$1.5 Million</option>
+                                                    <option value="2000000">$2 Million</option>
+                                                    <option value="2500000">$2.5 Million</option>
+                                                    <option value="3000000">$3 Million</option>
+                                                    <option value="3500000">$3.5 Million</option>
+                                                    <option value="4000000">$4 Million</option>
+                                                    <option value="4500000">$4.5 Million</option>
+                                                    <option value="5000000">$5 Million</option>
+                                                    <option value="6000000">$6 Million</option>
+                                                    <option value="7000000">$7 Million</option>
+                                                </select>
+                                            </div>
+                                            <span class="mt-4">to</span>
+                                            <div class="col">
+                                                <label for="p-id"></label>
+                                                <select id="p-id" name="maxPricetxt" class="form-control">
+                                                    <option selected="selected" value="No Limit">No Limit</option>
+                                                    <option value="50000">$50,000</option>
+                                                    <option value="100000">$100,000</option>
+                                                    <option value="150000">$150,000</option>
+                                                    <option value="200000">$200,000</option>
+                                                    <option value="250000">$250,000</option>
+                                                    <option value="300000">$300,000</option>
+                                                    <option value="350000">$350,000</option>
+                                                    <option value="400000">$400,000</option>
+                                                    <option value="450000">$450,000</option>
+                                                    <option value="500000">$500,000</option>
+                                                    <option value="550000">$550,000</option>
+                                                    <option value="600000">$600,000</option>
+                                                    <option value="650000">$650,000</option>
+                                                    <option value="700000">$700,000</option>
+                                                    <option value="750000">$750,000</option>
+                                                    <option value="800000">$800,000</option>
+                                                    <option value="850000">$850,000</option>
+                                                    <option value="900000">$900,000</option>
+                                                    <option value="950000">$950,000</option>
+                                                    <option value="1000000">$1 Million</option>
+                                                    <option value="1500000">$1.5 Million</option>
+                                                    <option value="2000000">$2 Million</option>
+                                                    <option value="2500000">$2.5 Million</option>
+                                                    <option value="3000000">$3 Million</option>
+                                                    <option value="3500000">$3.5 Million</option>
+                                                    <option value="4000000">$4 Million</option>
+                                                    <option value="4500000">$4.5 Million</option>
+                                                    <option value="5000000">$5 Million</option>
+                                                    <option value="6000000">$6 Million</option>
+                                                    <option value="7000000">$7 Million</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="p-id">Min Sq. Feet</label>
+                                                <input id="p-id" name="minSqfeettext" type="text" class="form-control" list="area_min" />
+                                                <datalist id="area_min">
+                                                    <option selected="selected">No Preference</option>
+                                                    <option>1000+</option>
+                                                    <option>1250+</option>
+                                                    <option>1500+</option>
+                                                    <option>1750+</option>
+                                                    <option>2000+</option>
+                                                    <option>2500+</option>
+                                                    <option>3000+</option>
+                                                    <option>4000+</option>
+                                                    <option>5000+</option>
+                                                    <option>6000+</option>
+                                                    <option>7000+</option>
+                                                    <option>8000+</option>
+                                                </datalist>
+                                            </div>
+                                            <div class="col">
+                                                <label for="p-id">Min Beds</label>
+                                                <input id="p-id" name="minBedtxt" type="text" class="form-control" list="min_bed" />
+                                                <datalist id="min_bed">
+                                                    <option>Any</option>
+                                                    <option>1+</option>
+                                                    <option>2+</option>
+                                                    <option>3+</option>
+                                                    <option>4+</option>
+                                                    <option>5+</option>
+                                                    <option>6+</option>
+                                                </datalist>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="p-id">Min Baths</label>
+                                                <input id="p-id" name="minBathtxt" type="text" class="form-control" list="min_bath" />
+                                                <datalist id="min_bath">
+                                                    <option>Any</option>
+                                                    <option>1+</option>
+                                                    <option>2+</option>
+                                                    <option>3+</option>
+                                                    <option>4+</option>
+                                                    <option>5+</option>
+                                                </datalist>
+                                            </div>
+                                            <div class="col">
+                                                <label for="p-id">Year Built</label>
+                                                <input id="p-id" type="text" name="builtYeartxt" class="form-control" list="year_built" />
+                                                <datalist id="year_built">
+                                                    <option>No Preference</option>
+                                                    <option>2020+</option>
+                                                    <option>2019+</option>
+                                                    <option>2018+</option>
+                                                    <option>2017+</option>
+                                                    <option>2016+</option>
+                                                    <option>2015+</option>
+                                                    <option>2014+</option>
+                                                    <option>2013+</option>
+                                                    <option>2012+</option>
+                                                    <option>2011+</option>
+                                                    <option>2010+</option>
+                                                    <option>2009+</option>
+                                                    <option>2008+</option>
+                                                    <option>2007+</option>
+                                                    <option>2006+</option>
+                                                    <option>2005+</option>
+                                                    <option>2004+</option>
+                                                    <option>2003+</option>
+                                                    <option>2002+</option>
+                                                    <option>2001+</option>
+                                                    <option>2000+</option>
+                                                    <option>1995+</option>
+                                                    <option>1990+</option>
+                                                    <option>1985+</option>
+                                                    <option>1980+</option>
+                                                    <option>1975+</option>
+                                                    <option>1970+</option>
+                                                    <option>1965+</option>
+                                                </datalist>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="p-id">Style</label>
+                                                <input id="p-id" name="styleTxt" type="text" class="form-control" list="style" />
+                                                <datalist id="style">
+                                                    <option selected="selected">All</option>
+                                                    <option>2/3 Family</option>
+                                                    <option>Antique</option>
+                                                    <option>Attached</option>
+                                                    <option>Brownstone</option>
+                                                    <option>Bungalow</option>
+                                                    <option>Cape</option>
+                                                    <option>Carriage House</option>
+                                                    <option>Chateauesque</option>
+                                                    <option>Colonial</option>
+                                                    <option>Colonial Revival</option>
+                                                    <option>Contemporary</option>
+                                                    <option>Cottage</option>
+                                                    <option>Courtyard</option>
+                                                    <option>Craftsman</option>
+                                                    <option>Detached</option>
+                                                    <option>Double Wide</option>
+                                                    <option>Duplex</option>
+                                                    <option>Dutch Colonial</option>
+                                                    <option>Farmhouse</option>
+                                                    <option>Federal</option>
+                                                    <option>French Colonial</option>
+                                                    <option>Front to Back Split</option>
+                                                    <option>Gambrel /Dutch</option>
+                                                    <option>Garden</option>
+                                                    <option>Garrison</option>
+                                                    <option>Georgian</option>
+                                                    <option>Gothic Revival</option>
+                                                    <option>Greek Revival</option>
+                                                    <option>Half-Duplex</option>
+                                                    <option>High-Rise</option>
+                                                    <option>Italianate</option>
+                                                    <option>Loft</option>
+                                                    <option>Lofted Split</option>
+                                                    <option>Log</option>
+                                                    <option>Low-Rise</option>
+                                                    <option>Mid-Century Modern</option>
+                                                    <option>Mid-Rise</option>
+                                                    <option>Modified</option>
+                                                    <option>Motel/Cottage/Efficiency</option>
+                                                    <option>Multi-Level</option>
+                                                    <option>Neoclassical</option>
+                                                    <option>Other (See Remarks)</option>
+                                                    <option>Queen Anne</option>
+                                                    <option>Raised Ranch</option>
+                                                    <option>Ranch</option>
+                                                    <option>Rowhouse</option>
+                                                    <option>Saltbox</option>
+                                                    <option>Second Empire</option>
+                                                    <option>Shingle</option>
+                                                    <option>Single Wide</option>
+                                                    <option>Spanish Colonial</option>
+                                                    <option>Split Entry</option>
+                                                    <option>Townhouse</option>
+                                                    <option>Tudor</option>
+                                                    <option>Victorian</option>
+                                                    <option>Villa</option>
+                                                    <option>W/ Addition</option>
+                                                    <option>Walk-out</option>
+                                                </datalist>
+                                            </div>
+                                            <div class="col">
+                                                <label for="p-id">Foreclosure</label>
+                                                <input id="p-id" name="foreclosureTxt" type="text" class="form-control" list="foreclosure" />
+                                                <datalist id="foreclosure">
+                                                    <option>No Preference</option>
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                </datalist>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="p-id">Min. Acres</label>
+                                                <input id="p-id" name="minAcrestxt" type="text" class="form-control" list="min_acres" />
+                                                <datalist id="min_acres">
+                                                    <option>No Preference</option>
+                                                    <option>1+</option>
+                                                    <option>2+</option>
+                                                    <option>3+</option>
+                                                    <option>4+</option>
+                                                    <option>5+</option>
+                                                    <option>6+</option>
+                                                    <option>7+</option>
+                                                    <option>8+</option>
+                                                    <option>9+</option>
+                                                    <option>10+</option>
+                                                    <option>20+</option>
+                                                    <option>30+</option>
+                                                    <option>40+</option>
+                                                    <option>50+</option>
+                                                </datalist>
+                                            </div>
+                                            <div class="col">
+                                                <label for="p-id">Short Sale</label>
+                                                <input id="p-id" name="shortSaletxt" type="text" class="form-control" list="short_sale" />
+                                                <datalist id="short_sale">
+                                                    <option>No Preference</option>
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                </datalist>
+                                            </div>
+                                        </div>
+                                        <button name="advancedSearchbtn" class="btn btn-danger" id="p-submit">Search</button>
+                                        <button name="advancedMapsearchbtn" class="btn btn-danger" id="p-submit">Map Search</button>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- -------advance search section end     ----------   -->   
+                </div>
+                <!-- -------advance search tab end     ----------   --> 
+
+                <!-- -------condo search tab     ----------   -->     
+                <div class="tab-pane fade" id="nav-condo" role="tabpanel" aria-labelledby="nav-condo-tab">
+                    <!-- -------condo search section    ----------   -->  
+                    <form action="condo-search-result">
+                        <div class="row">
+                            <div class="col">
+                                <h3 id="location">Location</h3>
+                                <div class="panel panel-default location">
+                                    <div class="row"> 
+                                    <div class="col-md-6"><h4>City </h4>
+                                    <br>
+                                    </div>
+                                    <div class="col-md-6"><h4>Area</h4> 
+                                    <br>
+                                    </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <select name="cityChoice" multiple class="form-control" id="sel1">
+                                                    <option value="all" selected="selected">All</option>
+                                                    <option value="Abington">Abington</option>
+                                                    <option value="Acton">Acton</option>
+                                                    <option value="Agawam">Agawam</option>
+                                                    <option value="Boston">Boston</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <select name="areaChoice" multiple class="form-control" id="sel1">
+                                                    <option value="all" selected="selected">Any</option>
+                                                    <option value="Allston">Allston</option>
+                                                    <option value="Bay Village">Bay Village</option>
+                                                    <option value="Beacon Hill">Beacon Hill</option>
+                                                    <option value="Brighton">Brighton</option>
+                                                    <option value="Feeding Hills">Feeding Hills</option>
+                                                    <option value="Hubbard Corners">Hubbard Corners</option>
+                                                    <option value="North Abington">North Abington</option>
+                                                    <option value="North Acton">North Acton</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+                            <div class="col">
+                                <h3>Property Details</h3>
+                                <div class="panel panel-default property">
+                                    <div class="panel-body">
+                                        <h4>Building Name</h4>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <select multiple class="form-control condo-dropdown" name="buildingChoice">
+                                                    <option value="all" selected="selected">Any</option>
+                                                    <option value="142 Beacon Street" selected="selected">142 Beacon Street</option>
+                                                    <option value="111-121 Green Street">111-121 Green Street</option>
+                                                    <option value="112-116 Sycamore St. Condominiums">112-116 Sycamore St. Condominiums</option>
+                                                    <option value="114 Inman Street Condominium">114 Inman Street Condominium</option>
+                                                    <option value="114 Merriam Avenue Professional Building">114 Merriam Avenue Professional Building</option>
+                                                    <option value="12 Rumford Ave">12 Rumford Ave</option>
+                                                    <option value="122-124 Beacon Hill Avenue Condominium">122-124 Beacon Hill Avenue Condominium</option>
+                                                    <option value="123 Elm St. Condominiums">123 Elm St. Condominiums</option>
+                                                    <option value="13 Garrison Rd.">13 Garrison Rd.</option>
+                                                    <option value="132 Amory Street Association">132 Amory Street Association</option>
+                                                    <option value="133 Beaconsfield Road Condominium Asso">133 Beaconsfield Road Condominium Asso</option>
+                                                    <option value="133 Beaconsfield Road Condominium Assoc">133 Beaconsfield Road Condominium Assoc</option>
+                                                    <option value="135-137 Salem Street Condominium">135-137 Salem Street Condominium</option>
+                                                    <option value="1383-1385 Providence Rd Condominium">1383-1385 Providence Rd Condominium</option>
+                                                    <option value="142 Beacon Street">142 Beacon Street</option>
+                                                    <option value="144 Moody Street Condominium Trust">144 Moody Street Condominium Trust</option>
+                                                    <option value="15-17 Charles Street Condominium">15-17 Charles Street Condominium</option>
+                                                    <option value="150 Hampshire Condominium">150 Hampshire Condominium</option>
+                                                    <option value="151 Broadway Condominium">151 Broadway Condominium</option>
+                                                    <option value="153 Sumner Street Condominiums">153 Sumner Street Condominiums</option>
+                                                    <option value="1540 Centre St Condominium">1540 Centre St Condominium</option>
+                                                    <option value="16 Evans Road Condominium Trust">16 Evans Road Condominium Trust</option>
+                                                    <option value="16 Ophir st Condo Association">16 Ophir st Condo Association</option>
+                                                    <option value="16 Symphony Rd condominiums">16 Symphony Rd condominiums</option>
+                                                    <option value="162-164 Coolidge Street Condominium">162-164 Coolidge Street Condominium</option>
+                                                    <option value="1746-1754 Commonwealth Ave">1746-1754 Commonwealth Ave</option>
+                                                    <option value="18 Irving St. Condominium">18 Irving St. Condominium</option>
+                                                    <option value="18 Putnam Street Townhouse Condominium">18 Putnam Street Townhouse Condominium</option>
+                                                    <option value="18-20 Beacon St Condominium">18-20 Beacon St Condominium</option>
+                                                    <option value="180 Commonwealth Ave Condominium">180 Commonwealth Ave Condominium</option>
+                                                    <option value="180-182 Pleasant Street Condominiums">180-182 Pleasant Street Condominiums</option>
+                                                    <option value="19 Wildwood Avenue Condominium">19 Wildwood Avenue Condominium</option>
+                                                    <option value="19-21 Thorndike Street Condominium">19-21 Thorndike Street Condominium</option>
+                                                    <option value="20 Chester Street Condominium">20 Chester Street Condominium</option>
+                                                    <option value="201 West Eighth Street Condominium">201 West Eighth Street Condominium</option>
+                                                    <option value="203 St. Botolph Street Condominium">203 St. Botolph Street Condominium</option>
+                                                    <option value="203-205 Comm Ave">203-205 Comm Ave</option>
+                                                    <option value="21 Edmands Street Condominium">21 Edmands Street Condominium</option>
+                                                    <option value="21 Pine Street Condominium Trust">21 Pine Street Condominium Trust</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="p-id">Price</label>
+                                                <select id="p-id" name="minPricetxt" class="form-control">
+                                                    <option value="No Limit" selected="selected">No Limit</option>
+                                                    <option selected="selected" value="No Limit">No Limit</option>
+                                                    <option value="50000">$50,000</option>
+                                                    <option value="100000">$100,000</option>
+                                                    <option value="150000">$150,000</option>
+                                                    <option value="200000">$200,000</option>
+                                                    <option value="250000">$250,000</option>
+                                                    <option value="300000">$300,000</option>
+                                                    <option value="350000">$350,000</option>
+                                                    <option value="400000">$400,000</option>
+                                                    <option value="450000">$450,000</option>
+                                                    <option value="500000">$500,000</option>
+                                                    <option value="550000">$550,000</option>
+                                                    <option value="600000">$600,000</option>
+                                                    <option value="650000">$650,000</option>
+                                                    <option value="700000">$700,000</option>
+                                                    <option value="750000">$750,000</option>
+                                                    <option value="800000">$800,000</option>
+                                                    <option value="850000">$850,000</option>
+                                                    <option value="900000">$900,000</option>
+                                                    <option value="950000">$950,000</option>
+                                                    <option value="1000000">$1 Million</option>
+                                                    <option value="1500000">$1.5 Million</option>
+                                                    <option value="2000000">$2 Million</option>
+                                                    <option value="2500000">$2.5 Million</option>
+                                                    <option value="3000000">$3 Million</option>
+                                                    <option value="3500000">$3.5 Million</option>
+                                                    <option value="4000000">$4 Million</option>
+                                                    <option value="4500000">$4.5 Million</option>
+                                                    <option value="5000000">$5 Million</option>
+                                                    <option value="6000000">$6 Million</option>
+                                                    <option value="7000000">$7 Million</option>
+                                                </select>
+                                            </div>
+                                            <span class="mt-4">to</span>
+                                            <div class="col">
+                                                <label for="p-id">Price</label>
+                                                <select id="p-id" name="maxPricetxt" class="form-control">
+                                                    <option value="No Limit" selected="selected">No Limit</option>
+                                                    <option selected="selected" value="No Limit">No Limit</option>
+                                                    <option value="50000">$50,000</option>
+                                                    <option value="100000">$100,000</option>
+                                                    <option value="150000">$150,000</option>
+                                                    <option value="200000">$200,000</option>
+                                                    <option value="250000">$250,000</option>
+                                                    <option value="300000">$300,000</option>
+                                                    <option value="350000">$350,000</option>
+                                                    <option value="400000">$400,000</option>
+                                                    <option value="450000">$450,000</option>
+                                                    <option value="500000">$500,000</option>
+                                                    <option value="550000">$550,000</option>
+                                                    <option value="600000">$600,000</option>
+                                                    <option value="650000">$650,000</option>
+                                                    <option value="700000">$700,000</option>
+                                                    <option value="750000">$750,000</option>
+                                                    <option value="800000">$800,000</option>
+                                                    <option value="850000">$850,000</option>
+                                                    <option value="900000">$900,000</option>
+                                                    <option value="950000">$950,000</option>
+                                                    <option value="1000000">$1 Million</option>
+                                                    <option value="1500000">$1.5 Million</option>
+                                                    <option value="2000000">$2 Million</option>
+                                                    <option value="2500000">$2.5 Million</option>
+                                                    <option value="3000000">$3 Million</option>
+                                                    <option value="3500000">$3.5 Million</option>
+                                                    <option value="4000000">$4 Million</option>
+                                                    <option value="4500000">$4.5 Million</option>
+                                                    <option value="5000000">$5 Million</option>
+                                                    <option value="6000000">$6 Million</option>
+                                                    <option value="7000000">$7 Million</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="p-id">Min Sq. Feet</label>
+                                                <input id="p-id" name="minSqfeettext" type="text" class="form-control" list="area_min" />
+                                                <datalist id="min_area">
+                                                    <option>1000+</option>
+                                                    <option>1250+</option>
+                                                    <option>1500+</option>
+                                                    <option>1750+</option>
+                                                    <option>2000+</option>
+                                                    <option>2500+</option>
+                                                    <option>3000+</option>
+                                                    <option>4000+</option>
+                                                    <option>5000+</option>
+                                                    <option>6000+</option>
+                                                    <option>7000+</option>
+                                                    <option>8000+</option>
+                                                </datalist>
+                                            </div>
+                                            <div class="col">
+                                                <label for="p-id">Min Beds</label>
+                                                <input id="p-id" name="minBedtxt" type="text" class="form-control" list="min_bed" />
+                                                <datalist id="min_bed">
+                                                    <option>Any</option>
+                                                    <option>1+</option>
+                                                    <option>2+</option>
+                                                    <option>3+</option>
+                                                    <option>4+</option>
+                                                    <option>5+</option>
+                                                    <option>6+</option>
+                                                </datalist>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="p-id">Min Baths</label>
+                                                <input id="p-id" name="minBathtxt" type="text" class="form-control" list="min_bath" />
+                                                <datalist id="min_bath">
+                                                    <option>Any</option>
+                                                    <option>1+</option>
+                                                    <option>2+</option>
+                                                    <option>3+</option>
+                                                    <option>4+</option>
+                                                    <option>5+</option>
+                                                </datalist>
+                                            </div>
+                                            <div class="col">
+                                                <label for="p-id">Style</label>
+                                                <input id="p-id" name="styleTxt" type="text" class="form-control" list="style" />
+                                                <datalist id="style">
+                                                    <option selected="selected">All</option>
+                                                    <option>2/3 Family</option>
+                                                    <option>Antique</option>
+                                                    <option>Attached</option>
+                                                    <option>Brownstone</option>
+                                                    <option>Bungalow</option>
+                                                    <option>Cape</option>
+                                                    <option>Carriage House</option>
+                                                    <option>Chateauesque</option>
+                                                    <option>Colonial</option>
+                                                    <option>Colonial Revival</option>
+                                                    <option>Contemporary</option>
+                                                    <option>Cottage</option>
+                                                    <option>Courtyard</option>
+                                                    <option>Craftsman</option>
+                                                    <option>Detached</option>
+                                                    <option>Double Wide</option>
+                                                    <option>Duplex</option>
+                                                    <option>Dutch Colonial</option>
+                                                    <option>Farmhouse</option>
+                                                    <option>Federal</option>
+                                                    <option>French Colonial</option>
+                                                    <option>Front to Back Split</option>
+                                                    <option>Gambrel /Dutch</option>
+                                                    <option>Garden</option>
+                                                    <option>Garrison</option>
+                                                    <option>Georgian</option>
+                                                    <option>Gothic Revival</option>
+                                                    <option>Greek Revival</option>
+                                                    <option>Half-Duplex</option>
+                                                    <option>High-Rise</option>
+                                                    <option>Italianate</option>
+                                                    <option>Loft</option>
+                                                    <option>Lofted Split</option>
+                                                    <option>Log</option>
+                                                    <option>Low-Rise</option>
+                                                    <option>Mid-Century Modern</option>
+                                                    <option>Mid-Rise</option>
+                                                    <option>Modified</option>
+                                                    <option>Motel/Cottage/Efficiency</option>
+                                                    <option>Multi-Level</option>
+                                                    <option>Neoclassical</option>
+                                                    <option>Other (See Remarks)</option>
+                                                    <option>Queen Anne</option>
+                                                    <option>Raised Ranch</option>
+                                                    <option>Ranch</option>
+                                                    <option>Rowhouse</option>
+                                                    <option>Saltbox</option>
+                                                    <option>Second Empire</option>
+                                                    <option>Shingle</option>
+                                                    <option>Single Wide</option>
+                                                    <option>Spanish Colonial</option>
+                                                    <option>Split Entry</option>
+                                                    <option>Townhouse</option>
+                                                    <option>Tudor</option>
+                                                    <option>Victorian</option>
+                                                    <option>Villa</option>
+                                                    <option>W/ Addition</option>
+                                                    <option>Walk-out</option>
+                                                </datalist>
+                                            </div>
+                                        </div>
+                                        <button name="condoSearchbtn" class="btn btn-danger" id="p-submit">Search</button>
+                                        <button name="condoMapsearchbtn" class="btn btn-danger" id="btn-map">Map Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- -------condo search section end    ----------   -->  
+
+                </div>
+                <!-- -------condo search tab end    ----------   -->  
+
+
+                <!-- --------mls search tab start------------ -->
+                <div class="tab-pane fade" id="nav-mls" role="tabpanel" aria-labelledby="nav-mls-tab">
+                    <div class="row">
+                        <div class="search-panel">
+                            <div class="panel panel-default address-search-box address-search">
+                                <div class="panel-body">
+                                    <form action="mls_result">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1 ">
+                                        Enter any number of MLS numbers in the box below, separated by commas, and we'll bring up those properties for you.
+                                            </label>
+                                            <input
+                                            type="email "
+                                            class="form-control"
+                                            id="exampleInputEmail1 "
+                                            aria-describedby="emailHelp "
+                                            name="mls_no"
+                                            />
+                                        </div>
+                                        <button class="btn btn-danger" id="p-submit">Search</button>
+                                        <button class="btn btn-danger" id="btn-map-search">Map Search</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- --------------mls search tab end--------------- -->
+
+                <!-- ------------------foreclosure search tab start---------------- -->
+                <div class="tab-pane fade" id="nav-foreclosure" role="tabpanel" aria-labelledby="nav-foreclosure-tab">
+                    <!-- ------------------foreclosure search section start---------------- -->
+                    <form action="foreclosure-search-result">
+                        <div class="row">
+                            <div class="col">
+                                <h3 id="location">Location</h3>
+                                <div class="panel panel-default location">
+                                    <div class="row"> 
+                                    <div class="col-md-6"><h4>City </h4>
+                                    <br>
+                                    </div>
+                                    <div class="col-md-6"><h4>Area</h4> 
+                                    <br>
+                                    </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <select name="cityChoice" multiple class="form-control" id="sel1">
+                                                    <option value="all" selected="selected">All</option>
+                                                    <option value="Abington">Abington</option>
+                                                    <option value="Acton">Acton</option>
+                                                    <option value="Agawam">Agawam</option>
+                                                    <option value="Boston">Boston</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <select name="areaChoice" multiple class="form-control" id="sel1">
+                                                    <option value="all" selected="selected">Any</option>
+                                                    <option value="Allston">Allston</option>
+                                                    <option value="Bay Village">Bay Village</option>
+                                                    <option value="Beacon Hill">Beacon Hill</option>
+                                                    <option value="Brighton">Brighton</option>
+                                                    <option value="Feeding Hills">Feeding Hills</option>
+                                                    <option value="Hubbard Corners">Hubbard Corners</option>
+                                                    <option value="North Abington">North Abington</option>
+                                                    <option value="North Acton">North Acton</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h3 id="property">Property</h3>
+                                <div class="panel panel-default property">
+                                    <div class="panel-body">
+                                        <h6>Property Type</h6>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" name="ptypeCheckbox" type="checkbox" id="inlineCheckbox1" value="House" />
+                                            <label class="form-check-label" for="inlineCheckbox1">Home</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="ptypeCheckbox" id="inlineCheckbox2" value="Condo" />
+                                            <label class="form-check-label" for="inlineCheckbox2">Condo</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="ptypeCheckbox" id="inlineCheckbox2" value="Land" />
+                                            <label class="form-check-label" for="inlineCheckbox2">Land</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="ptypeCheckbox" id="inlineCheckbox2" value="Multi-Res" />
+                                            <label class="form-check-label" for="inlineCheckbox2">Multi-Res</label>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="p-id">Price</label>
+                                                <select id="p-id" name="minPricetxt" class="form-control"> 
+                                                    <option selected="selected" value="No Limit">No Limit</option>
+                                                    <option selected="selected" value="No Limit">No Limit</option>
+                                                    <option value="50000">$50,000</option>
+                                                    <option value="100000">$100,000</option>
+                                                    <option value="150000">$150,000</option>
+                                                    <option value="200000">$200,000</option>
+                                                    <option value="250000">$250,000</option>
+                                                    <option value="300000">$300,000</option>
+                                                    <option value="350000">$350,000</option>
+                                                    <option value="400000">$400,000</option>
+                                                    <option value="450000">$450,000</option>
+                                                    <option value="500000">$500,000</option>
+                                                    <option value="550000">$550,000</option>
+                                                    <option value="600000">$600,000</option>
+                                                    <option value="650000">$650,000</option>
+                                                    <option value="700000">$700,000</option>
+                                                    <option value="750000">$750,000</option>
+                                                    <option value="800000">$800,000</option>
+                                                    <option value="850000">$850,000</option>
+                                                    <option value="900000">$900,000</option>
+                                                    <option value="950000">$950,000</option>
+                                                    <option value="1000000">$1 Million</option>
+                                                    <option value="1500000">$1.5 Million</option>
+                                                    <option value="2000000">$2 Million</option>
+                                                    <option value="2500000">$2.5 Million</option>
+                                                    <option value="3000000">$3 Million</option>
+                                                    <option value="3500000">$3.5 Million</option>
+                                                    <option value="4000000">$4 Million</option>
+                                                    <option value="4500000">$4.5 Million</option>
+                                                    <option value="5000000">$5 Million</option>
+                                                    <option value="6000000">$6 Million</option>
+                                                    <option value="7000000">$7 Million</option>
+                                                </select>
+                                            </div>
+                                            <span class="mt-4">to</span>
+                                            <div class="col">
+                                                <label for="p-id"></label>
+                                                <select id="p-id" name="maxPricetxt" class="form-control">
+                                                    <option selected="selected" value="No Limit">No Limit</option>
+                                                    <option selected="selected" value="No Limit">No Limit</option>
+                                                    <option value="50000">$50,000</option>
+                                                    <option value="100000">$100,000</option>
+                                                    <option value="150000">$150,000</option>
+                                                    <option value="200000">$200,000</option>
+                                                    <option value="250000">$250,000</option>
+                                                    <option value="300000">$300,000</option>
+                                                    <option value="350000">$350,000</option>
+                                                    <option value="400000">$400,000</option>
+                                                    <option value="450000">$450,000</option>
+                                                    <option value="500000">$500,000</option>
+                                                    <option value="550000">$550,000</option>
+                                                    <option value="600000">$600,000</option>
+                                                    <option value="650000">$650,000</option>
+                                                    <option value="700000">$700,000</option>
+                                                    <option value="750000">$750,000</option>
+                                                    <option value="800000">$800,000</option>
+                                                    <option value="850000">$850,000</option>
+                                                    <option value="900000">$900,000</option>
+                                                    <option value="950000">$950,000</option>
+                                                    <option value="1000000">$1 Million</option>
+                                                    <option value="1500000">$1.5 Million</option>
+                                                    <option value="2000000">$2 Million</option>
+                                                    <option value="2500000">$2.5 Million</option>
+                                                    <option value="3000000">$3 Million</option>
+                                                    <option value="3500000">$3.5 Million</option>
+                                                    <option value="4000000">$4 Million</option>
+                                                    <option value="4500000">$4.5 Million</option>
+                                                    <option value="5000000">$5 Million</option>
+                                                    <option value="6000000">$6 Million</option>
+                                                    <option value="7000000">$7 Million</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="p-id">Min Sq. Feet</label>
+                                                <input id="p-id" name="minSqfeettext" type="text" class="form-control" list="area_min" />
+                                                <datalist id="area_min">
+                                                    <option selected="selected">No Preference</option>
+                                                    <option>1000+</option>
+                                                    <option>1250+</option>
+                                                    <option>1500+</option>
+                                                    <option>1750+</option>
+                                                    <option>2000+</option>
+                                                    <option>2500+</option>
+                                                    <option>3000+</option>
+                                                    <option>4000+</option>
+                                                    <option>5000+</option>
+                                                    <option>6000+</option>
+                                                    <option>7000+</option>
+                                                    <option>8000+</option>
+                                                </datalist>
+                                            </div>
+                                            <div class="col">
+                                                <label for="p-id">Min Beds</label>
+                                                <input id="p-id" name="minBedtxt" type="text" class="form-control" list="min_bed" />
+                                                <datalist id="min_bed">
+                                                    <option>Any</option>
+                                                    <option>1+</option>
+                                                    <option>2+</option>
+                                                    <option>3+</option>
+                                                    <option>4+</option>
+                                                    <option>5+</option>
+                                                    <option>6+</option>
+                                                </datalist>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="p-id">Min Baths</label>
+                                                <input id="p-id" name="minBathtxt" type="text" class="form-control" list="min_bath" />
+                                                <datalist id="min_bath">
+                                                    <option>Any</option>
+                                                    <option>1+</option>
+                                                    <option>2+</option>
+                                                    <option>3+</option>
+                                                    <option>4+</option>
+                                                    <option>5+</option>
+                                                </datalist>
+                                            </div>
+                                            <div class="col">
+                                                <label for="p-id">Year Built</label>
+                                                <input id="p-id" type="text" name="builtYeartxt" class="form-control" list="year_built" />
+                                                <datalist id="year_built">
+                                                    <option>No Preference</option>
+                                                    <option>2020+</option>
+                                                    <option>2019+</option>
+                                                    <option>2018+</option>
+                                                    <option>2017+</option>
+                                                    <option>2016+</option>
+                                                    <option>2015+</option>
+                                                    <option>2014+</option>
+                                                    <option>2013+</option>
+                                                    <option>2012+</option>
+                                                    <option>2011+</option>
+                                                    <option>2010+</option>
+                                                    <option>2009+</option>
+                                                    <option>2008+</option>
+                                                    <option>2007+</option>
+                                                    <option>2006+</option>
+                                                    <option>2005+</option>
+                                                    <option>2004+</option>
+                                                    <option>2003+</option>
+                                                    <option>2002+</option>
+                                                    <option>2001+</option>
+                                                    <option>2000+</option>
+                                                    <option>1995+</option>
+                                                    <option>1990+</option>
+                                                    <option>1985+</option>
+                                                    <option>1980+</option>
+                                                    <option>1975+</option>
+                                                    <option>1970+</option>
+                                                    <option>1965+</option>
+                                                </datalist>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="p-id">Style</label>
+                                                <input id="p-id" name="styleTxt" type="text" class="form-control" list="style" />
+                                                <datalist id="style">
+                                                    <option selected="selected">All</option>
+                                                    <option>2/3 Family</option>
+                                                    <option>Antique</option>
+                                                    <option>Attached</option>
+                                                    <option>Brownstone</option>
+                                                    <option>Bungalow</option>
+                                                    <option>Cape</option>
+                                                    <option>Carriage House</option>
+                                                    <option>Chateauesque</option>
+                                                    <option>Colonial</option>
+                                                    <option>Colonial Revival</option>
+                                                    <option>Contemporary</option>
+                                                    <option>Cottage</option>
+                                                    <option>Courtyard</option>
+                                                    <option>Craftsman</option>
+                                                    <option>Detached</option>
+                                                    <option>Double Wide</option>
+                                                    <option>Duplex</option>
+                                                    <option>Dutch Colonial</option>
+                                                    <option>Farmhouse</option>
+                                                    <option>Federal</option>
+                                                    <option>French Colonial</option>
+                                                    <option>Front to Back Split</option>
+                                                    <option>Gambrel /Dutch</option>
+                                                    <option>Garden</option>
+                                                    <option>Garrison</option>
+                                                    <option>Georgian</option>
+                                                    <option>Gothic Revival</option>
+                                                    <option>Greek Revival</option>
+                                                    <option>Half-Duplex</option>
+                                                    <option>High-Rise</option>
+                                                    <option>Italianate</option>
+                                                    <option>Loft</option>
+                                                    <option>Lofted Split</option>
+                                                    <option>Log</option>
+                                                    <option>Low-Rise</option>
+                                                    <option>Mid-Century Modern</option>
+                                                    <option>Mid-Rise</option>
+                                                    <option>Modified</option>
+                                                    <option>Motel/Cottage/Efficiency</option>
+                                                    <option>Multi-Level</option>
+                                                    <option>Neoclassical</option>
+                                                    <option>Other (See Remarks)</option>
+                                                    <option>Queen Anne</option>
+                                                    <option>Raised Ranch</option>
+                                                    <option>Ranch</option>
+                                                    <option>Rowhouse</option>
+                                                    <option>Saltbox</option>
+                                                    <option>Second Empire</option>
+                                                    <option>Shingle</option>
+                                                    <option>Single Wide</option>
+                                                    <option>Spanish Colonial</option>
+                                                    <option>Split Entry</option>
+                                                    <option>Townhouse</option>
+                                                    <option>Tudor</option>
+                                                    <option>Victorian</option>
+                                                    <option>Villa</option>
+                                                    <option>W/ Addition</option>
+                                                    <option>Walk-out</option>
+                                                </datalist>
+                                            </div>
+                                            <div class="col">
+                                                <label for="p-id">Min. Acres</label>
+                                                <input id="p-id" name="minAcrestxt" type="text" class="form-control" list="min_acres" />
+                                                <datalist id="min_acres">
+                                                    <option>No Preference</option>
+                                                    <option>1+</option>
+                                                    <option>2+</option>
+                                                    <option>3+</option>
+                                                    <option>4+</option>
+                                                    <option>5+</option>
+                                                    <option>6+</option>
+                                                    <option>7+</option>
+                                                    <option>8+</option>
+                                                    <option>9+</option>
+                                                    <option>10+</option>
+                                                    <option>20+</option>
+                                                    <option>30+</option>
+                                                    <option>40+</option>
+                                                    <option>50+</option>
+                                                </datalist>
+                                            </div>
+                                        </div>
+                                        
+                                        <button name="advancedSearchbtn" class="btn btn-danger" id="p-submit">Search</button>
+                                        <button name="advancedMapsearchbtn" class="btn btn-danger" id="p-submit">Map Search</button>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- --------------------foreclosure search section end------------------- -->
+                </div>
+                <!-- --------------------foreclosure search tab end------------------- -->
+
+
+                <!-- ----------zipcode search tab start---------- -->
+                <div class="tab-pane fade" id="nav-zipcode" role="tabpanel" aria-labelledby="nav-zipcode-tab">
+                <!-- ----------zipcode search section start---------- -->
+                    <form action="zipcode-search-result">
+                        <div class="row">
+                            <div class="col">
+                                <h3>Location</h3>
+                                <div class="panel panel-default location">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h4>Zip</h4>
+                                            <br />
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <select multiple class="form-control" id="zip" name="zipChoice">
+                                                    <option value="all" selected="selected">Any</option>
+                                                    <option value="00000">00000</option>
+                                                    <option value="787001">787001</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h3>Property Detail</h3>
+                                <div class="panel panel-default property">
+                                    <div class="panel-body">
+                                        <h6>Property Type</h6>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" name="ptypeCheckbox" type="checkbox" id="inlineCheckbox1" value="House" />
+                                            <label class="form-check-label" for="inlineCheckbox1">Home</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="ptypeCheckbox" id="inlineCheckbox2" value="Condo" />
+                                            <label class="form-check-label" for="inlineCheckbox2">Condo</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="ptypeCheckbox" id="inlineCheckbox2" value="Land" />
+                                            <label class="form-check-label" for="inlineCheckbox2">Land</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="ptypeCheckbox" id="inlineCheckbox2" value="Multi-Res" />
+                                            <label class="form-check-label" for="inlineCheckbox2">Multi-Res</label>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="zip-id1">Price</label>
+                                                <select id="zip-id1" name="minPricetxt" class="form-control"> 
+                                                    <option selected="selected" value="No Limit">No Limit</option>
+                                                    <option selected="selected" value="No Limit">No Limit</option>
+                                                    <option value="50000">$50,000</option>
+                                                    <option value="100000">$100,000</option>
+                                                    <option value="150000">$150,000</option>
+                                                    <option value="200000">$200,000</option>
+                                                    <option value="250000">$250,000</option>
+                                                    <option value="300000">$300,000</option>
+                                                    <option value="350000">$350,000</option>
+                                                    <option value="400000">$400,000</option>
+                                                    <option value="450000">$450,000</option>
+                                                    <option value="500000">$500,000</option>
+                                                    <option value="550000">$550,000</option>
+                                                    <option value="600000">$600,000</option>
+                                                    <option value="650000">$650,000</option>
+                                                    <option value="700000">$700,000</option>
+                                                    <option value="750000">$750,000</option>
+                                                    <option value="800000">$800,000</option>
+                                                    <option value="850000">$850,000</option>
+                                                    <option value="900000">$900,000</option>
+                                                    <option value="950000">$950,000</option>
+                                                    <option value="1000000">$1 Million</option>
+                                                    <option value="1500000">$1.5 Million</option>
+                                                    <option value="2000000">$2 Million</option>
+                                                    <option value="2500000">$2.5 Million</option>
+                                                    <option value="3000000">$3 Million</option>
+                                                    <option value="3500000">$3.5 Million</option>
+                                                    <option value="4000000">$4 Million</option>
+                                                    <option value="4500000">$4.5 Million</option>
+                                                    <option value="5000000">$5 Million</option>
+                                                    <option value="6000000">$6 Million</option>
+                                                    <option value="7000000">$7 Million</option>
+                                                </select>
+                                            </div>
+                                            <span class="mt-4">to</span>
+                                            <div class="col">
+                                                <label for="zip-id2"></label>
+                                                <select id="zip-id2" name="maxPricetxt" class="form-control">
+                                                    <option selected="selected" value="No Limit">No Limit</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="zip-id3">Min Sq. Feet</label>
+                                                <input id="zip-id3" name="minSqfeettext" type="text" class="form-control" list="area_min" />
+                                                <datalist id="area_min">
+                                                    <option selected="selected">No Preference</option>
+                                                    <option>1000+</option>
+                                                    <option>1250+</option>
+                                                    <option>1500+</option>
+                                                    <option>1750+</option>
+                                                    <option>2000+</option>
+                                                    <option>2500+</option>
+                                                    <option>3000+</option>
+                                                    <option>4000+</option>
+                                                    <option>5000+</option>
+                                                    <option>6000+</option>
+                                                    <option>7000+</option>
+                                                    <option>8000+</option>
+                                                </datalist>
+                                            </div>
+                                            <div class="col">
+                                                <label for="zip-id4">Min Beds</label>
+                                                <input id="zip-id4" name="minBedtxt" type="text" class="form-control" list="min_bed" />
+                                                <datalist id="min_bed">
+                                                    <option>Any</option>
+                                                    <option>1+</option>
+                                                    <option>2+</option>
+                                                    <option>3+</option>
+                                                    <option>4+</option>
+                                                    <option>5+</option>
+                                                    <option>6+</option>
+                                                </datalist>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="zip-id5">Min Baths</label>
+                                                <input id="zip-id5" name="minBathtxt" type="text" class="form-control" list="min_bath" />
+                                                <datalist id="min_bath">
+                                                    <option>Any</option>
+                                                    <option>1+</option>
+                                                    <option>2+</option>
+                                                    <option>3+</option>
+                                                    <option>4+</option>
+                                                    <option>5+</option>
+                                                </datalist>
+                                            </div>
+                                            <div class="col">
+                                                <label for="zip-id6">Style</label>
+                                                <input id="zip-id6" name="styleTxt" type="text" class="form-control" list="style" />
+                                                <datalist id="style">
+                                                    <option selected="selected">All</option>
+                                                    <option>2/3 Family</option>
+                                                    <option>Antique</option>
+                                                    <option>Attached</option>
+                                                    <option>Brownstone</option>
+                                                    <option>Bungalow</option>
+                                                    <option>Cape</option>
+                                                    <option>Carriage House</option>
+                                                    <option>Chateauesque</option>
+                                                    <option>Colonial</option>
+                                                    <option>Colonial Revival</option>
+                                                    <option>Contemporary</option>
+                                                    <option>Cottage</option>
+                                                    <option>Courtyard</option>
+                                                    <option>Craftsman</option>
+                                                    <option>Detached</option>
+                                                    <option>Double Wide</option>
+                                                    <option>Duplex</option>
+                                                    <option>Dutch Colonial</option>
+                                                    <option>Farmhouse</option>
+                                                    <option>Federal</option>
+                                                    <option>French Colonial</option>
+                                                    <option>Front to Back Split</option>
+                                                    <option>Gambrel /Dutch</option>
+                                                    <option>Garden</option>
+                                                    <option>Garrison</option>
+                                                    <option>Georgian</option>
+                                                    <option>Gothic Revival</option>
+                                                    <option>Greek Revival</option>
+                                                    <option>Half-Duplex</option>
+                                                    <option>High-Rise</option>
+                                                    <option>Italianate</option>
+                                                    <option>Loft</option>
+                                                    <option>Lofted Split</option>
+                                                    <option>Log</option>
+                                                    <option>Low-Rise</option>
+                                                    <option>Mid-Century Modern</option>
+                                                    <option>Mid-Rise</option>
+                                                    <option>Modified</option>
+                                                    <option>Motel/Cottage/Efficiency</option>
+                                                    <option>Multi-Level</option>
+                                                    <option>Neoclassical</option>
+                                                    <option>Other (See Remarks)</option>
+                                                    <option>Queen Anne</option>
+                                                    <option>Raised Ranch</option>
+                                                    <option>Ranch</option>
+                                                    <option>Rowhouse</option>
+                                                    <option>Saltbox</option>
+                                                    <option>Second Empire</option>
+                                                    <option>Shingle</option>
+                                                    <option>Single Wide</option>
+                                                    <option>Spanish Colonial</option>
+                                                    <option>Split Entry</option>
+                                                    <option>Townhouse</option>
+                                                    <option>Tudor</option>
+                                                    <option>Victorian</option>
+                                                    <option>Villa</option>
+                                                    <option>W/ Addition</option>
+                                                    <option>Walk-out</option>
+                                                </datalist>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-danger" id="zip-submit">Search</button>
+                                        <button class="btn btn-danger" id="btn-map">Map Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                <!-- ----------zipcode search section end---------- -->
+                </div>
+                <!-- ----------zipcode search tab end---------- -->
+
+
+                <!-- ----------sold search tab start---------- -->
+                <div class="tab-pane fade" id="nav-sold" role="tabpanel" aria-labelledby="nav-sold-tab">
+                <!-- ----------sold search section start---------- -->
+                    <form action="sold-search-result">
+                        <div class="row">
+                            <div class="col">
+                                <h3 id="location">Location</h3>
+                                <div class="panel panel-default location">
+                                    <div class="row"> 
+                                    <div class="col-md-6"><h4>City </h4>
+                                    <br>
+                                    </div>
+                                    <div class="col-md-6"><h4>Area</h4> 
+                                    <br>
+                                    </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <select name="cityChoice" multiple class="form-control" id="sel1">
+                                                    <option value="all" selected="selected">All</option>
+                                                    <option value="Abington">Abington</option>
+                                                    <option value="Acton">Acton</option>
+                                                    <option value="Agawam">Agawam</option>
+                                                    <option value="Boston">Boston</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <select name="areaChoice" multiple class="form-control" id="sel1">
+                                                    <option value="all" selected="selected">Any</option>
+                                                    <option value="Allston">Allston</option>
+                                                    <option value="Bay Village">Bay Village</option>
+                                                    <option value="Beacon Hill">Beacon Hill</option>
+                                                    <option value="Brighton">Brighton</option>
+                                                    <option value="Feeding Hills">Feeding Hills</option>
+                                                    <option value="Hubbard Corners">Hubbard Corners</option>
+                                                    <option value="North Abington">North Abington</option>
+                                                    <option value="North Acton">North Acton</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h3 id="property">Property</h3>
+                                <div class="panel panel-default property">
+                                    <div class="panel-body">
+                                        <h6>Property Type</h6>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" name="ptypeCheckbox" type="checkbox" id="inlineCheckbox1" value="House" />
+                                            <label class="form-check-label" for="inlineCheckbox1">Home</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="ptypeCheckbox" id="inlineCheckbox2" value="Condo" />
+                                            <label class="form-check-label" for="inlineCheckbox2">Condo</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="ptypeCheckbox" id="inlineCheckbox2" value="Land" />
+                                            <label class="form-check-label" for="inlineCheckbox2">Land</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="ptypeCheckbox" id="inlineCheckbox2" value="Multi-Res" />
+                                            <label class="form-check-label" for="inlineCheckbox2">Multi-Res</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" checked="checked" name="saletypeCheckbox" id="inlineCheckbox2" value="Sold" disabled />
+                                            <label class="form-check-label" for="inlineCheckbox2">Sold only</label>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="p-id">Price</label>
+                                                <select id="p-id" name="minPricetxt" class="form-control"> 
+                                                    <option selected="selected" value="No Limit">No Limit</option>
+                                                    <option selected="selected" value="No Limit">No Limit</option>
+                                                    <option value="50000">$50,000</option>
+                                                    <option value="100000">$100,000</option>
+                                                    <option value="150000">$150,000</option>
+                                                    <option value="200000">$200,000</option>
+                                                    <option value="250000">$250,000</option>
+                                                    <option value="300000">$300,000</option>
+                                                    <option value="350000">$350,000</option>
+                                                    <option value="400000">$400,000</option>
+                                                    <option value="450000">$450,000</option>
+                                                    <option value="500000">$500,000</option>
+                                                    <option value="550000">$550,000</option>
+                                                    <option value="600000">$600,000</option>
+                                                    <option value="650000">$650,000</option>
+                                                    <option value="700000">$700,000</option>
+                                                    <option value="750000">$750,000</option>
+                                                    <option value="800000">$800,000</option>
+                                                    <option value="850000">$850,000</option>
+                                                    <option value="900000">$900,000</option>
+                                                    <option value="950000">$950,000</option>
+                                                    <option value="1000000">$1 Million</option>
+                                                    <option value="1500000">$1.5 Million</option>
+                                                    <option value="2000000">$2 Million</option>
+                                                    <option value="2500000">$2.5 Million</option>
+                                                    <option value="3000000">$3 Million</option>
+                                                    <option value="3500000">$3.5 Million</option>
+                                                    <option value="4000000">$4 Million</option>
+                                                    <option value="4500000">$4.5 Million</option>
+                                                    <option value="5000000">$5 Million</option>
+                                                    <option value="6000000">$6 Million</option>
+                                                    <option value="7000000">$7 Million</option>
+                                                </select>
+                                            </div>
+                                            <span class="mt-4">to</span>
+                                            <div class="col">
+                                                <label for="p-id"></label>
+                                                <select id="p-id" name="maxPricetxt" class="form-control">
+                                                    <option selected="selected" value="No Limit">No Limit</option>
+                                                    <option selected="selected" value="No Limit">No Limit</option>
+                                                    <option value="50000">$50,000</option>
+                                                    <option value="100000">$100,000</option>
+                                                    <option value="150000">$150,000</option>
+                                                    <option value="200000">$200,000</option>
+                                                    <option value="250000">$250,000</option>
+                                                    <option value="300000">$300,000</option>
+                                                    <option value="350000">$350,000</option>
+                                                    <option value="400000">$400,000</option>
+                                                    <option value="450000">$450,000</option>
+                                                    <option value="500000">$500,000</option>
+                                                    <option value="550000">$550,000</option>
+                                                    <option value="600000">$600,000</option>
+                                                    <option value="650000">$650,000</option>
+                                                    <option value="700000">$700,000</option>
+                                                    <option value="750000">$750,000</option>
+                                                    <option value="800000">$800,000</option>
+                                                    <option value="850000">$850,000</option>
+                                                    <option value="900000">$900,000</option>
+                                                    <option value="950000">$950,000</option>
+                                                    <option value="1000000">$1 Million</option>
+                                                    <option value="1500000">$1.5 Million</option>
+                                                    <option value="2000000">$2 Million</option>
+                                                    <option value="2500000">$2.5 Million</option>
+                                                    <option value="3000000">$3 Million</option>
+                                                    <option value="3500000">$3.5 Million</option>
+                                                    <option value="4000000">$4 Million</option>
+                                                    <option value="4500000">$4.5 Million</option>
+                                                    <option value="5000000">$5 Million</option>
+                                                    <option value="6000000">$6 Million</option>
+                                                    <option value="7000000">$7 Million</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="p-id">Min Sq. Feet</label>
+                                                <input id="p-id" name="minSqfeettext" type="text" class="form-control" list="area_min" />
+                                                <datalist id="area_min">
+                                                    <option selected="selected">No Preference</option>
+                                                    <option>1000+</option>
+                                                    <option>1250+</option>
+                                                    <option>1500+</option>
+                                                    <option>1750+</option>
+                                                    <option>2000+</option>
+                                                    <option>2500+</option>
+                                                    <option>3000+</option>
+                                                    <option>4000+</option>
+                                                    <option>5000+</option>
+                                                    <option>6000+</option>
+                                                    <option>7000+</option>
+                                                    <option>8000+</option>
+                                                </datalist>
+                                            </div>
+                                            <div class="col">
+                                                <label for="p-id">Min Beds</label>
+                                                <input id="p-id" name="minBedtxt" type="text" class="form-control" list="min_bed" />
+                                                <datalist id="min_bed">
+                                                    <option>Any</option>
+
+                                                    <option>1+</option>
+                                                    <option>2+</option>
+                                                    <option>3+</option>
+                                                    <option>4+</option>
+                                                    <option>5+</option>
+                                                    <option>6+</option>
+                                                </datalist>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="p-id">Min Baths</label>
+                                                <input id="p-id" name="minBathtxt" type="text" class="form-control" list="min_bath" />
+                                                <datalist id="min_bath">
+                                                    <option>Any</option>
+                                                    <option>1+</option>
+                                                    <option>2+</option>
+                                                    <option>3+</option>
+                                                    <option>4+</option>
+                                                    <option>5+</option>
+                                                </datalist>
+                                            </div>
+                                            <div class="col">
+                                                <label for="p-id">Year Built</label>
+                                                <input id="p-id" type="text" name="builtYeartxt" class="form-control" list="year_built" />
+                                                <datalist id="year_built">
+                                                    <option>No Preference</option>
+                                                    <option>2020+</option>
+                                                    <option>2019+</option>
+                                                    <option>2018+</option>
+                                                    <option>2017+</option>
+                                                    <option>2016+</option>
+                                                    <option>2015+</option>
+                                                    <option>2014+</option>
+                                                    <option>2013+</option>
+                                                    <option>2012+</option>
+                                                    <option>2011+</option>
+                                                    <option>2010+</option>
+                                                    <option>2009+</option>
+                                                    <option>2008+</option>
+                                                    <option>2007+</option>
+                                                    <option>2006+</option>
+                                                    <option>2005+</option>
+                                                    <option>2004+</option>
+                                                    <option>2003+</option>
+                                                    <option>2002+</option>
+                                                    <option>2001+</option>
+                                                    <option>2000+</option>
+                                                    <option>1995+</option>
+                                                    <option>1990+</option>
+                                                    <option>1985+</option>
+                                                    <option>1980+</option>
+                                                    <option>1975+</option>
+                                                    <option>1970+</option>
+                                                    <option>1965+</option>
+                                                </datalist>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="p-id">Style</label>
+                                                <input id="p-id" name="styleTxt" type="text" class="form-control" list="style" />
+                                                <datalist id="style">
+                                                    <option selected="selected">All</option>
+                                                    <option>2/3 Family</option>
+                                                    <option>Antique</option>
+                                                    <option>Attached</option>
+                                                    <option>Brownstone</option>
+                                                    <option>Bungalow</option>
+                                                    <option>Cape</option>
+                                                    <option>Carriage House</option>
+                                                    <option>Chateauesque</option>
+                                                    <option>Colonial</option>
+                                                    <option>Colonial Revival</option>
+                                                    <option>Contemporary</option>
+                                                    <option>Cottage</option>
+                                                    <option>Courtyard</option>
+                                                    <option>Craftsman</option>
+                                                    <option>Detached</option>
+                                                    <option>Double Wide</option>
+                                                    <option>Duplex</option>
+                                                    <option>Dutch Colonial</option>
+                                                    <option>Farmhouse</option>
+                                                    <option>Federal</option>
+                                                    <option>French Colonial</option>
+                                                    <option>Front to Back Split</option>
+                                                    <option>Gambrel /Dutch</option>
+                                                    <option>Garden</option>
+                                                    <option>Garrison</option>
+                                                    <option>Georgian</option>
+                                                    <option>Gothic Revival</option>
+                                                    <option>Greek Revival</option>
+                                                    <option>Half-Duplex</option>
+                                                    <option>High-Rise</option>
+                                                    <option>Italianate</option>
+                                                    <option>Loft</option>
+                                                    <option>Lofted Split</option>
+                                                    <option>Log</option>
+                                                    <option>Low-Rise</option>
+                                                    <option>Mid-Century Modern</option>
+                                                    <option>Mid-Rise</option>
+                                                    <option>Modified</option>
+                                                    <option>Motel/Cottage/Efficiency</option>
+                                                    <option>Multi-Level</option>
+                                                    <option>Neoclassical</option>
+                                                    <option>Other (See Remarks)</option>
+                                                    <option>Queen Anne</option>
+                                                    <option>Raised Ranch</option>
+                                                    <option>Ranch</option>
+                                                    <option>Rowhouse</option>
+                                                    <option>Saltbox</option>
+                                                    <option>Second Empire</option>
+                                                    <option>Shingle</option>
+                                                    <option>Single Wide</option>
+                                                    <option>Spanish Colonial</option>
+                                                    <option>Split Entry</option>
+                                                    <option>Townhouse</option>
+                                                    <option>Tudor</option>
+                                                    <option>Victorian</option>
+                                                    <option>Villa</option>
+                                                    <option>W/ Addition</option>
+                                                    <option>Walk-out</option>
+                                                </datalist>
+                                            </div>
+                                            <div class="col">
+                                                <label for="p-id">Foreclosure</label>
+                                                <input id="p-id" name="foreclosureTxt" type="text" class="form-control" list="foreclosure" />
+                                                <datalist id="foreclosure">
+                                                    <option>No Preference</option>
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                </datalist>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="p-id">Min. Acres</label>
+                                                <input id="p-id" name="minAcrestxt" type="text" class="form-control" list="min_acres" />
+                                                <datalist id="min_acres">
+                                                    <option>No Preference</option>
+                                                    <option>1+</option>
+                                                    <option>2+</option>
+                                                    <option>3+</option>
+                                                    <option>4+</option>
+                                                    <option>5+</option>
+                                                    <option>6+</option>
+                                                    <option>7+</option>
+                                                    <option>8+</option>
+                                                    <option>9+</option>
+                                                    <option>10+</option>
+                                                    <option>20+</option>
+                                                    <option>30+</option>
+                                                    <option>40+</option>
+                                                    <option>50+</option>
+                                                </datalist>
+                                            </div>
+                                            <div class="col">
+                                                <label for="p-id">Short Sale</label>
+                                                <input id="p-id" name="shortSaletxt" type="text" class="form-control" list="short_sale" />
+                                                <datalist id="short_sale">
+                                                    <option>No Preference</option>
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                </datalist>
+                                            </div>
+                                        </div>
+                                        <button name="advancedSearchbtn" class="btn btn-danger" id="p-submit">Search</button>
+                                        <button name="advancedMapsearchbtn" class="btn btn-danger" id="p-submit">Map Search</button>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                <!-- ----------sold search section end---------- -->
+                </div>
+                <!-- ----------sold search tab end---------- -->
+
+
+                <!-- ----------address search tab start---------- -->
+                <div class="tab-pane fade" id="nav-address" role="tabpanel" aria-labelledby="nav-address-tab">
+                    <div class="row">
+                        <div class="search-panel">
+                            <div class="panel panel-default address-search-box address-search">
+                                <div class="panel-body">
+                                    <form action="address_result">
+                                        <div class="form-group">
+                                            <label for="address ">Enter any words from an address, separated by spaces (not
+                                                                commas), and we'll bring up those properties for you.</label>
+                                            <input
+                                            type="text"
+                                            class="form-control"
+                                            id="address"
+                                            name="address"
+                                            />
+                                        </div>
+                                        <button class="btn btn-danger" id="p-submit">Search</button>
+                                        <button class="btn btn-danger" id="p-submit">Map Search</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ----------address search tab end---------- -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

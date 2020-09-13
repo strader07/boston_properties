@@ -1,0 +1,89 @@
+{% extends  'buyer/base.html' %}
+{% load static %}
+<title>{% block title %} Advance Search  {% endblock %}</title>
+
+ {% block pagecontent %}
+ 
+ <!-- <hr>
+ <br> -->
+ <div style="border: 0.5px solid; margin:0px"> </div>
+ <br>
+ <br>
+ <!--Button Section-->
+ <div class="container">
+     <div class="row">
+         <div class="col">
+             <a href="" class="btn btn-danger">Interactive Map</a>
+             &nbsp; &nbsp;
+             <a href="advance-search" class="btn btn-danger">Refine Your Search</a>
+             <br>
+             <br>
+             <!-- <a href="" class="btn btn-danger"><i class="fa fa-plus-square"></i>&nbsp;Refine Your Search</a> -->
+         </div>
+         <div class="col-4">
+             <hr>
+ 
+ 
+         </div>
+     </div>
+ </div>
+ <!--Section End-->
+
+<!-- feature section -->
+<section class="feature-section spad">
+	<div class="container">
+		{% if properties %}
+		<div class="row">
+			{% for property in properties %}
+			<div class="col-lg-4 col-md-6">
+				<!-- feature -->
+				<div class="feature-item">
+					<div class="feature-pic set-bg" data-setbg="{{ property.property_image.url }}">
+						<div class="sale-notic">{{ property.sale_type }}</div>
+					</div>
+					<div class="feature-text">
+						<div class="text-center feature-title">
+							<h5>{{ property.name }}</h5>
+							<p><i class="fa fa-map-marker"></i>{{ property.property_address }}</p>
+						</div>
+						<div class="room-info-warp">
+							<div class="room-info">
+								<div class="rf-left">
+									<p><i class="fa fa-th-large"></i>{{ property.property_size_in_sqrfeet }} Square foot</p>
+									<p><i class="fa fa-bed"></i>{{ property.rooms }} Bedrooms</p>
+								</div>
+								<div class="rf-right">
+									<p><i class="fa fa-car"></i> 2 Garages</p>
+									<p><i class="fa fa-bath"></i>{{ property.bathrooms }} Bathrooms</p>
+								</div>	
+							</div>
+							<div class="room-info">
+								<div class="rf-left">
+									<p><i class="fa fa-user"></i>{{ property.user }}</p>
+								</div>
+								<div class="rf-right">
+									<p><i class="fa fa-clock-o"></i>{{ property.upload_date }}</p>
+								</div>	
+							</div>
+						</div>
+						<a href="#" class="room-price">${{ property.price }}</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		{% else %}
+			<div container><h4>No results found.</h4></div>
+		{% endif %}	
+	</div>
+</section>
+<!-- feature section end -->
+
+<!-- </div> -->
+
+
+
+
+
+{% endblock %}
+

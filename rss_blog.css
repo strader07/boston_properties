@@ -1,0 +1,38 @@
+.fw-feed-item-url {
+  display: block;
+  overflow: hidden;
+  margin: auto !important;
+}
+
+#fw-feed-items {
+    padding-left: 20px !important;
+    overflow: hidden;
+}
+
+.fw-feed-item-title {
+    margin-left: 10px !important;
+}
+
+.fw-feed-item-description {
+    margin-left: 10px !important;
+    padding-bottom: 20px !important;
+}
+
+.fw-feed-item-date {
+    margin-right: 10px !important;
+    float: right;
+}
+
+.fw-feed-item {
+    margin: 0;
+    padding: 10px 0 !important;
+    clear: both;
+}
+
+.fw-feed-item-image {
+    margin: 0;
+    padding: 0;
+    width: 150px !important;
+    height: 140px !important;
+    overflow: hidden;
+}
